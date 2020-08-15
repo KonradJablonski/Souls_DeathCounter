@@ -4,7 +4,8 @@ Useful for Twitch streaming.
 Developed by CodeRad
 Special thanks to cisc0disco
 
-<iframe src="https://drive.google.com/file/d/1Q4HwfYyeT9CugoCZBBgBlpZ4iTeaAO5p/preview" width="600" height="340"></iframe>
+Example Image:
+https://drive.google.com/file/d/1Q4HwfYyeT9CugoCZBBgBlpZ4iTeaAO5p/preview
 
 This application only supports Dark Souls Remastered.
 
