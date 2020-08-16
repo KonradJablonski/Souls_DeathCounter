@@ -8,13 +8,14 @@ Special thanks to cisc0disco
 <p><a href="https://drive.google.com/file/d/1Q4HwfYyeT9CugoCZBBgBlpZ4iTeaAO5p/preview" target="_blank">Example Image</a></p>
 
 This application only supports:
-Dark Souls: Prepare To Die
-Dark Souls Remastered
-Dark Souls 2
-Dark Souls 2 Scholar of the first sin
-Dark Souls 3
-Sekiro
-
+<ol>
+<li>Dark Souls: Prepare To Die</li>
+<li>Dark Souls Remastered</li>
+<li>Dark Souls 2</li>
+<li>Dark Souls 2 Scholar of the first sin</li>
+<li>Dark Souls 3</li>
+<li>Sekiro</li>
+</ol>
 <b>Info:</b>
 The idea behind this software is to run this along side your twitch stream where it will report automatically your death count.
 The death count is retrived from RAM. As this application only READS the information, it will not be picked up by anti-cheat system.
