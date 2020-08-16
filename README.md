@@ -1,11 +1,16 @@
-# DarkSoulsRemastered_DeathCounter
+# Death Counter for Souls games
 Useful for Twitch streaming.
 
 Developed by CodeRad
+
 Special thanks to cisc0disco
 
 <p><a href="https://drive.google.com/file/d/1Q4HwfYyeT9CugoCZBBgBlpZ4iTeaAO5p/preview" target="_blank">Example Image</a></p>
-This application only supports Dark Souls Remastered.
+
+This application only supports:
+Dark Souls: Prepare To Die
+Dark Souls Remastered
+Dark Souls 3
 
 <b>Info:</b>
 The idea behind this software is to run this along side your twitch stream where it will report automatically your death count.
@@ -14,15 +19,15 @@ Reading directly from RAM requires Admin rights, so you will be required to run 
 
 <b>How To Use:</b>
 1. Run the application.
-2. Run Dark Souls Remastered, load your save. 
+2. Run your game load your save. 
 3. Get death count from the app screen, or you can use deaths.txt. This text file is updated at the same time as the screen.
 4. Go to Settings.txt to modifiy Font Color, Font Size, Font Type and Font Style of the death counter text.
 
 <b>StreamLabs: </b>
-1. Run the "DarkSouls_Remastered_DeathCounter" app.
+1. Run the "Universal_Game_DeathCounter" app.
 2. Run StreamLabs.
 3. In StreamLabs, add new Source "Window Capture"
-4. Under Window, select the "DarkSouls_Remastered_DeathCounter" app.
+4. Under Window, select the "Universal_Game_DeathCounter" app.
 5. Untick "Capture Cursor" and press Done.
 6. Now you need to get rid of the gray box surrounding the text. 
 7. Right Click on the just created source and select "Filters"
