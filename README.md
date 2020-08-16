@@ -1,6 +1,7 @@
 # Death Counter for Souls games
 Useful for Twitch streaming.
 Developed by CodeRad
+
 If you found this app useful, feel free to support my work.
 <p><a href="paypal.me/KonradJablonski" target="_blank">DONATE</a></p>
 
