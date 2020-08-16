@@ -10,7 +10,10 @@ Special thanks to cisc0disco
 This application only supports:
 Dark Souls: Prepare To Die
 Dark Souls Remastered
+Dark Souls 2
+Dark Souls 2 Scholar of the first sin
 Dark Souls 3
+Sekiro
 
 <b>Info:</b>
 The idea behind this software is to run this along side your twitch stream where it will report automatically your death count.
@@ -38,6 +41,7 @@ Reading directly from RAM requires Admin rights, so you will be required to run 
 Now you should have transparent death counter. Next you can put a custom text next to it, something like "DEATHS".
 
 <b>FAQ:</b>
+
 Do I need to start fresh run.
 * No. You do not need to start fresh game with this software, you can just start running it mid run and it will know your true death count.
 
