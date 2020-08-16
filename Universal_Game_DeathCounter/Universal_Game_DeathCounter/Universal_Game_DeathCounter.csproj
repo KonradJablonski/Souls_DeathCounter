@@ -7,8 +7,8 @@
     <ProjectGuid>{D3D55BEE-3A2B-4BBE-9D5F-7F9E8C176154}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DarkSouls_Remastered_DeathCounter</RootNamespace>
-    <AssemblyName>DarkSouls_Remastered_DeathCounter</AssemblyName>
+    <RootNamespace>Universal_Game_DeathCounter</RootNamespace>
+    <AssemblyName>Universal_Game_DeathCounter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -89,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">

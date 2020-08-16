@@ -10,9 +10,6 @@ namespace Universal_Game_DeathCounter
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         Timer UpdateDeathCounter_Timer;
-        IntPtr Base;
-        VAMemory vam;
-        int currentDeathCount = 0;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -49,7 +46,7 @@ namespace Universal_Game_DeathCounter
             this.DeathCounter_Label.Name = "DeathCounter_Label";
             this.DeathCounter_Label.Size = new System.Drawing.Size(250, 176);
             this.DeathCounter_Label.TabIndex = 0;
-            this.DeathCounter_Label.Text = "0";
+            this.DeathCounter_Label.Text = "...";
             this.DeathCounter_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DeathCounterForm
@@ -68,7 +65,7 @@ namespace Universal_Game_DeathCounter
             this.Name = "DeathCounterForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "DSR - Death Counter";
+            this.Text = "Death Counter";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Load += new System.EventHandler(this.DeathCounterForm_Load);
             this.ResumeLayout(false);

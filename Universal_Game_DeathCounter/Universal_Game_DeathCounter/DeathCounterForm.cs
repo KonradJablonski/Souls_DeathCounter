@@ -8,6 +8,17 @@ namespace Universal_Game_DeathCounter
 {
     public partial class DeathCounterForm : Form
     {
+        IntPtr Base;
+        VAMemory vam;
+        int currentDeathCount = 0;
+
+        const short max_games = 2;
+        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls" };
+        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700 };
+        int[] currentGameOffset = { 0x98, 0x5C };
+        short currentGameID = -1;
+
+
         public DeathCounterForm()
         {
             InitializeComponent();
@@ -15,8 +26,31 @@ namespace Universal_Game_DeathCounter
 
         private void DeathCounterForm_Load(object sender, EventArgs e)
         {
+     
+            DetectGame();
             InitialiseSettings();
             InitialiseDeathCounterTimer();
+        }
+
+        private void DetectGame()
+        {
+            for (short i = 0; i < max_games; i++)
+            {
+                if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault() != null)
+                {
+
+                    currentGameID = i;
+                    this.Text = currentGame[i];
+                    this.DeathCounter_Label.BeginInvoke((MethodInvoker)delegate () { this.DeathCounter_Label.Text = "0"; });
+
+                    Base = Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault().MainModule.BaseAddress + memoryLocationOfDeathCounter[currentGameID];
+                    vam = new VAMemory(currentGame[currentGameID]);
+
+                    return;
+                }
+            }
+            this.Text = "Searching...";
+            currentGameID = -1;
         }
 
         private void InitialiseSettings()
@@ -65,14 +99,12 @@ namespace Universal_Game_DeathCounter
 
         private void UpdateDeathCounterLabel(object myObject, EventArgs myEventArgs)
         {
+
             UpdateDeathCounter_Timer.Stop();
             UpdateDeathCounter_Timer.Interval = 2000;
-            if (Process.GetProcessesByName("DarkSoulsRemastered").FirstOrDefault() != null)
+            if (currentGameID != -1 && Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault() != null)
             {
-                Base = Process.GetProcessesByName("DarkSoulsRemastered").FirstOrDefault().MainModule.BaseAddress + 0x1D278F0;
-                vam = new VAMemory("DarkSoulsRemastered");
-
-                IntPtr Basefirst = IntPtr.Add((IntPtr)vam.ReadInt32(Base), 0x98);
+                IntPtr Basefirst = IntPtr.Add((IntPtr)vam.ReadInt32(Base), currentGameOffset[currentGameID]);
 
                 var deathCount = ((IntPtr)vam.ReadInt32(Basefirst)).ToString();
 
@@ -87,6 +119,14 @@ namespace Universal_Game_DeathCounter
 
                 }
             }
+            else
+            {
+                currentDeathCount = 0;
+                this.DeathCounter_Label.BeginInvoke((MethodInvoker)delegate () { this.DeathCounter_Label.Text = "..."; });
+                File.WriteAllText(Directory.GetCurrentDirectory() + "\\deaths.txt", "0");
+                DetectGame();
+            }
+
             UpdateDeathCounter_Timer.Start();
         }
 
