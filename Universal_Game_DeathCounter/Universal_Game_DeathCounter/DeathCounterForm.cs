@@ -12,10 +12,10 @@ namespace Universal_Game_DeathCounter
         VAMemory vam;
         int currentDeathCount = 0;
 
-        const short max_games = 2;
-        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls" };
-        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700 };
-        int[] currentGameOffset = { 0x98, 0x5C };
+        const short max_games = 3;
+        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls", "DarkSoulsIII" };
+        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700, 0x4740178 };
+        int[] currentGameOffset = { 0x98, 0x5C, 0x98 };
         short currentGameID = -1;
 
 
@@ -38,15 +38,18 @@ namespace Universal_Game_DeathCounter
             {
                 if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault() != null)
                 {
+                    //if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault().)
+                    if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault().MainModule.BaseAddress != null)
+                    {
+                        currentGameID = i;
+                        this.Text = currentGame[i];
+                        this.DeathCounter_Label.BeginInvoke((MethodInvoker)delegate () { this.DeathCounter_Label.Text = "0"; });
 
-                    currentGameID = i;
-                    this.Text = currentGame[i];
-                    this.DeathCounter_Label.BeginInvoke((MethodInvoker)delegate () { this.DeathCounter_Label.Text = "0"; });
+                        Base = Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault().MainModule.BaseAddress + memoryLocationOfDeathCounter[currentGameID];
+                        vam = new VAMemory(currentGame[currentGameID]);
 
-                    Base = Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault().MainModule.BaseAddress + memoryLocationOfDeathCounter[currentGameID];
-                    vam = new VAMemory(currentGame[currentGameID]);
-
-                    return;
+                        return;
+                    }
                 }
             }
             this.Text = "Searching...";
@@ -104,7 +107,7 @@ namespace Universal_Game_DeathCounter
             UpdateDeathCounter_Timer.Interval = 2000;
             if (currentGameID != -1 && Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault() != null)
             {
-                IntPtr Basefirst = IntPtr.Add((IntPtr)vam.ReadInt32(Base), currentGameOffset[currentGameID]);
+                IntPtr Basefirst = IntPtr.Add((IntPtr)vam.ReadULong(Base), currentGameOffset[currentGameID]);
 
                 var deathCount = ((IntPtr)vam.ReadInt32(Basefirst)).ToString();
 
