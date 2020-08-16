@@ -3,7 +3,7 @@ Useful for Twitch streaming.
 Developed by CodeRad
 
 If you found this app useful, feel free to support my work.
-<p><a href="www.paypal.me/KonradJablonski" target="_blank">DONATE</a></p>
+<p><a href="https://www.paypal.me/KonradJablonski" target="_blank">DONATE</a></p>
 
 Special thanks to cisc0disco
 
