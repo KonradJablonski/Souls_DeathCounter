@@ -64,4 +64,4 @@ Do I need to start fresh run.
 * Yes, just need to make sure you write the "font name" in exactly the same way.
 
 <b>DOWNLOAD:</b>
-<p><a href="https://drive.google.com/file/d/130Nf_BortPzpNTDAgQ1CcEBcqzGIf_DV/view?usp=sharing">Download Latest Version</a></p>
+<p><a href="https://drive.google.com/file/d/1Pfadc6U2pCSDthqK4_OchblXczQdnoI4/view?usp=sharing">Download Latest Version (1.0.0.1)</a></p>
