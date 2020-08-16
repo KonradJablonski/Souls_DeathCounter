@@ -5,6 +5,8 @@ Developed by CodeRad
 
 Special thanks to cisc0disco
 
+Tested on: Windows 10 64bit
+
 <p><a href="https://drive.google.com/file/d/1Q4HwfYyeT9CugoCZBBgBlpZ4iTeaAO5p/preview" target="_blank">Example Image</a></p>
 
 This application only supports:
