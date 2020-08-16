@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DarkSouls_Remastered_DeathCounter
+namespace Universal_Game_DeathCounter
 {
     static class Program
     {

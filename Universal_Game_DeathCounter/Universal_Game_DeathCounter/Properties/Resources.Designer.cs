@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DarkSouls_Remastered_DeathCounter.Properties
+namespace Universal_Game_DeathCounter.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace DarkSouls_Remastered_DeathCounter.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DarkSouls_Remastered_DeathCounter.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Universal_Game_DeathCounter.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

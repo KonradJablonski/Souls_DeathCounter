@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DarkSouls_Remastered_DeathCounter.Properties
+namespace Universal_Game_DeathCounter.Properties
 {
 
 

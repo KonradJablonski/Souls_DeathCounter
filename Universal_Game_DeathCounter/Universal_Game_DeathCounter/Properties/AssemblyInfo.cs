@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DarkSouls_Remastered_DeathCounter")]
-[assembly: AssemblyDescription("Displays death counter for Dark Souls Remastered.")]
+[assembly: AssemblyTitle("Universal_Game_DeathCounter")]
+[assembly: AssemblyDescription("Displays death counter for soul like games.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CodeRad")]
-[assembly: AssemblyProduct("DarkSouls_Remastered_DeathCounter")]
+[assembly: AssemblyProduct("Universal_Game_DeathCounter")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyFileVersion("1.0.0.1")]
