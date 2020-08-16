@@ -13,15 +13,16 @@ namespace Universal_Game_DeathCounter
         VAMemory vam;
         int currentDeathCount = 0;
 
-        const short max_games = 5;
+        const short max_games = 6;
         const short max_offsets = 3;
-        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls", "DarkSoulsIII", "DarkSoulsII", "DarkSoulsII" };
-        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700, 0x4740178, 0x11493F4, 0x160B8D0 };
-        int[,] currentGameOffset = new int[max_games, max_offsets] { { 0x98, 0, 0 },
-                                                   { 0x5C, 0, 0 },
-                                                   { 0x98, 0, 0 },
+        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls", "DarkSoulsIII", "DarkSoulsII", "DarkSoulsII", "Sekiro"};
+        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700, 0x4740178, 0x11493F4, 0x160B8D0 , 0x3B48D30};
+        int[,] currentGameOffset = new int[max_games, max_offsets] { { 0x98, 0, 0 }, //DS Remastered
+                                                   { 0x5C, 0, 0 }, //DS PTD
+                                                   { 0x98, 0, 0 }, //DS3
                                                    { 0x74, 0x378, 0x1A0 }, //OG DS2
-                                                   { 0xD0, 0x490, 0x1A4 } }; //SOTFS
+                                                   { 0xD0, 0x490, 0x1A4 }, //SOTFS
+                                                   { 0x90, 0x00, 0x00 } }; //Sekiro
 
         string OriginalDarkSouls2_Description = "DARK SOULS Ⅱ";
         short OriginalDarkSouls2_Index = 3;
