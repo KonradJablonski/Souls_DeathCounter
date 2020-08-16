@@ -47,7 +47,7 @@ Now you should have transparent death counter. Next you can put a custom text ne
 
 <b>FAQ:</b>
 
-Do I need to start fresh run.
+<b>Do I need to start fresh run.</b>
 * No. You do not need to start fresh game with this software, you can just start running it mid run and it will know your true death count.
 
 <B>Can I change font color, or font type?</b>
