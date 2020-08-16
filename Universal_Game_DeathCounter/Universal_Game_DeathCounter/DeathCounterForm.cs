@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
+
 namespace Universal_Game_DeathCounter
 {
     public partial class DeathCounterForm : Form
@@ -12,12 +13,20 @@ namespace Universal_Game_DeathCounter
         VAMemory vam;
         int currentDeathCount = 0;
 
-        const short max_games = 3;
-        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls", "DarkSoulsIII" };
-        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700, 0x4740178 };
-        int[] currentGameOffset = { 0x98, 0x5C, 0x98 };
-        short currentGameID = -1;
+        const short max_games = 5;
+        const short max_offsets = 3;
+        string[] currentGame = { "DarkSoulsRemastered", "DarkSouls", "DarkSoulsIII", "DarkSoulsII", "DarkSoulsII" };
+        int[] memoryLocationOfDeathCounter = { 0x1D278F0, 0xF78700, 0x4740178, 0x11493F4, 0x160B8D0 };
+        int[,] currentGameOffset = new int[max_games, max_offsets] { { 0x98, 0, 0 },
+                                                   { 0x5C, 0, 0 },
+                                                   { 0x98, 0, 0 },
+                                                   { 0x74, 0x378, 0x1A0 }, //OG DS2
+                                                   { 0xD0, 0x490, 0x1A4 } }; //SOTFS
 
+        string OriginalDarkSouls2_Description = "DARK SOULS Ⅱ";
+        short OriginalDarkSouls2_Index = 3;
+         
+        short currentGameID = -1;
 
         public DeathCounterForm()
         {
@@ -38,8 +47,16 @@ namespace Universal_Game_DeathCounter
             {
                 if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault() != null)
                 {
-                    //if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault().)
-                    if (Process.GetProcessesByName(currentGame[i]).FirstOrDefault().MainModule.BaseAddress != null)
+                    bool passed = true;
+                    if (OriginalDarkSouls2_Index == i) //Dark souls 2 and Darks Souls 2 SOTFS have the same names, therefor I am reading the FileDescription for OG Dark Souls to make sure we are setting up correct DS2
+                    {
+                        string ds2_FileDescription = Process.GetProcessesByName(currentGame[i]).FirstOrDefault().MainModule.FileVersionInfo.FileDescription;
+
+                        if (ds2_FileDescription != OriginalDarkSouls2_Description)
+                            passed = false;
+                    }
+
+                    if (passed)
                     {
                         currentGameID = i;
                         this.Text = currentGame[i];
@@ -47,9 +64,9 @@ namespace Universal_Game_DeathCounter
 
                         Base = Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault().MainModule.BaseAddress + memoryLocationOfDeathCounter[currentGameID];
                         vam = new VAMemory(currentGame[currentGameID]);
-
                         return;
                     }
+
                 }
             }
             this.Text = "Searching...";
@@ -107,9 +124,23 @@ namespace Universal_Game_DeathCounter
             UpdateDeathCounter_Timer.Interval = 2000;
             if (currentGameID != -1 && Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault() != null)
             {
-                IntPtr Basefirst = IntPtr.Add((IntPtr)vam.ReadULong(Base), currentGameOffset[currentGameID]);
+                IntPtr BaseOffseted = Base;
+                for (short i = 0; i < max_offsets; i++)
+                {
+                    if (currentGameOffset[currentGameID, i] != 0)
+                    {
+                        if (!NativeMethods.IsWin64Emulator(Process.GetProcessesByName(currentGame[currentGameID]).FirstOrDefault()))
+                        {
+                            BaseOffseted = (IntPtr)vam.ReadInt64(BaseOffseted) + currentGameOffset[currentGameID, i];
+                        }
+                        else
+                            BaseOffseted = (IntPtr)vam.ReadInt32(BaseOffseted) + currentGameOffset[currentGameID, i];
+                    }
+                    else
+                        break;
+                }
 
-                var deathCount = ((IntPtr)vam.ReadInt32(Basefirst)).ToString();
+                var deathCount = ((IntPtr)vam.ReadInt32(BaseOffseted)).ToString();
 
                 if (currentDeathCount != int.Parse(deathCount))
                 {
@@ -132,6 +163,5 @@ namespace Universal_Game_DeathCounter
 
             UpdateDeathCounter_Timer.Start();
         }
-
     }
 }

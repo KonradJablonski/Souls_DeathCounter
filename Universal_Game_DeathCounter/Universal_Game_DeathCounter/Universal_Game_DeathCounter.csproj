@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="DeathCounterForm.cs">
       <SubType>Form</SubType>
     </Compile>
