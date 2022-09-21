@@ -1,3 +1,5 @@
+# THIS COUNTER STOPPED WORKING WITH LATEST DS3 UPDATE THAT RE-ENABLED ONLINE #
+
 # Death Counter for Souls games
 Useful for Twitch streaming.
 Developed by CodeRad
